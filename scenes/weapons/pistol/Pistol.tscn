@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/weapons/pistol/Pistol.gd" type="Script" id=1]
+[ext_resource path="res://scenes/weapons/base/BaseWeapon.tscn" type="PackedScene" id=2]
+
+[node name="Weapon" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+max_ammo_count = 10
+action_quote = "firing pistol"
+damage_quote = "hit by pistol"
+
+[node name="Sprite" parent="." index="1"]
+modulate = Color( 0.133333, 0.129412, 0.145098, 1 )
+position = Vector2( 13, 0 )
+scale = Vector2( 0.5, 0.2 )

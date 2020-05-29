@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/soldiers/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/environment/Tree.tscn" type="PackedScene" id=2]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Tree" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -434.631, -156.598 )
+
+[node name="Tree2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -407.784, 360.989 )
+
+[node name="Tree3" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 530.112, 279.713 )
+
+[node name="Tree4" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 481.999, -315.377 )
+
+[node name="Tree5" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -104.499, -386.518 )
+
+[node name="Tree6" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -84.4858, 45.8228 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
