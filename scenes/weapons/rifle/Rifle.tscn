@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/weapons/base/BaseWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/weapons/rifle/Rifle.gd" type="Script" id=2]
+
+[node name="Weapon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+weap_range = 500
+fire_cooldown = 0.1
+reload_cooldown = 3.0
+action_quote = "shooting rifle"
+damage_quote = "hit by rifle"
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.415686, 0.121569, 0.941176, 1 )
+
+[node name="MuzzleFlash" parent="." index="1"]
+position = Vector2( 51.7391, -0.225929 )

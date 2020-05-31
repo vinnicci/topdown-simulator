@@ -6,7 +6,6 @@
 
 [node name="Player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-speed = 1000
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.27451, 0.819608, 0.87451, 1 )
@@ -15,5 +14,4 @@ modulate = Color( 0.27451, 0.819608, 0.87451, 1 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
 
-[node name="Weapon" parent="." index="5" instance=ExtResource( 3 )]
-position = Vector2( 0, 1 )
+[node name="Weapon" parent="." index="6" instance=ExtResource( 3 )]

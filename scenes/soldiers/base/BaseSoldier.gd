@@ -3,52 +3,49 @@ class_name Soldier
 
 
 #don't forget to give soldier a weapon
-
-
-export(int) var speed: = 100
+export(int) var speed: = 1000
 var velocity: Vector2
 
 
-#these functions handles rigid body movement
-#might be different if you're using kinematic bodies
-func _physics_process(delta: float) -> void:
-	control(delta)
-
-
-func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	if velocity.is_normalized() == false:
-		velocity = velocity.normalized()
-	velocity = velocity * speed
-	applied_force = velocity
-	velocity = Vector2(0,0)
+func _ready() -> void:
+	#weapon component
+	$Weapon.set_parent(self)
+	
+	#npc ai component
+	if has_node("AI"):
+		$AI.set_parent(self)
 
 
 func set_status(text: String) -> void:
 	$Status.text = text
 
 
-#ai will access these functions below
-
 #movement
-#virtual func accessible by player or ai
-func control(delta) -> void:
-	pass
+#these function handles rigid body movement
+#might be different if you're using kinematic bodies
+func _integrate_forces(state: Physics2DDirectBodyState) -> void:
+	velocity = velocity.normalized()
+	velocity *= speed
+	applied_force = velocity
+	velocity = Vector2(0,0)
 
 
 #fire weapon
-#be sure to attach weapon
 func fire_weapon() -> void:
 	$Weapon.fire()
 
 
-#reloading
+#reload weapon
 func reload_weapon() -> void:
 	$Weapon.reload()
 
 
 #damage simulation
-#soldier won't die
-#you can implement death mechanic yourself,
-#but for now you will only see which weapon hit
+#for now you will only see which weapon hit
 func take_damage(text: String) -> void:
 	$DamageStatus.text = text
+	$HideDamageStatusTimer.start()
+
+
+func _on_HideDamageStatusTimer_timeout() -> void:
+	$DamageStatus.text = ""

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Soldier",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/soldiers/player/Player.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Soldier",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scenes/weapons/base/BaseWeapon.gd"
 } ]
 _global_script_class_icons={
+"Player": "",
 "Soldier": "",
 "Weapon": ""
 }
@@ -27,7 +33,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Topdown Game Simulator"
+run/main_scene="res://test/TestLevel.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "btree" )
 
 [input]
 

@@ -9,7 +9,10 @@ max_ammo_count = 10
 action_quote = "firing pistol"
 damage_quote = "hit by pistol"
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="0"]
 modulate = Color( 0.133333, 0.129412, 0.145098, 1 )
 position = Vector2( 13, 0 )
 scale = Vector2( 0.5, 0.2 )
+
+[node name="MuzzleFlash" parent="." index="1"]
+position = Vector2( 30, 0 )
