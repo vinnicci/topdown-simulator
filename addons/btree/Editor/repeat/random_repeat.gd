@@ -2,7 +2,7 @@ tool
 extends GraphNode
 
 const Runtime = preload("res://addons/btree/Runtime/runtime.gd")
-const type = Runtime.TNodeTypes.WAIT
+const type = Runtime.TNodeTypes.RANDOM_REPEAT
 
 func _ready():
 	connect("close_request", self, "close_request")
@@ -21,11 +21,13 @@ func get_data():
 	return {
 		"count":$slot0/count.value,
 		"size":rect_size,
-		"offset":offset
+		"offset":offset,
+		"ranges":$slot1/count.value
 	}
 
 func set_data(data):
 	rect_size = data.size
 	offset = data.offset
 	$slot0/count.call_deferred("set_value", data.count)
+	$slot1/count.call_deferred("set_value", data.ranges)
 	return

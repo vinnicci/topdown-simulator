@@ -1,9 +1,12 @@
 tool
 extends GraphNode
 
-const Runtime = preload('../../Runtime/runtime.gd')
-
+const Runtime = preload("res://addons/btree/Runtime/runtime.gd")
 const type = Runtime.TNodeTypes.ROOT
+
+func _ready():
+	connect("dragged", get_parent(), "node_dragged", [self])
+	return
 
 func get_data():
 	return {

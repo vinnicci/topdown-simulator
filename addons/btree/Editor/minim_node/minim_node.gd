@@ -1,14 +1,13 @@
 tool
 extends GraphNode
 
-const Runtime = preload('../../Runtime/runtime.gd')
+const Runtime = preload("res://addons/btree/Runtime/runtime.gd")
 
 const type = Runtime.TNodeTypes.MINIM
 var data
 
 func _ready():
 	connect("close_request", self, "close_request")
-	connect("resize_request", self, "resize_request")
 	$expand.connect("pressed", self, "pressed")
 	return
 
@@ -44,8 +43,4 @@ func pressed():
 
 func close_request():
 	get_parent().child_delete(self)
-	return
-
-func resize_request(min_size):
-	rect_size = min_size
 	return

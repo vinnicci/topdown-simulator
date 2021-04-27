@@ -36,6 +36,10 @@ config/name="Topdown Game Simulator"
 run/main_scene="res://test/TestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "btree" )

@@ -41,20 +41,8 @@ position = Vector2( 249.416, -113.178 )
 [node name="Dummy" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 47.1622, 227.609 )
 
-[node name="Dummy2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 244.013, 73.819 )
-
 [node name="Dummy3" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 147.638, -170.194 )
 
 [node name="Gunner" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 1037.89, 97.8115 )
-
-[node name="Gunner2" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( -1043.32, 59.7736 )
-
-[node name="Gunner3" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 5.43408, -1054.19 )
-
-[node name="Gunner4" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 21.7361, 1048.76 )
+position = Vector2( 1076.04, 2.1861 )

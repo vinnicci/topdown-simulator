@@ -1,17 +1,14 @@
 tool
 extends GraphNode
 
-const Runtime = preload('../../Runtime/runtime.gd')
-
+const Runtime = preload("res://addons/btree/Runtime/runtime.gd")
 var type = Runtime.TNodeTypes.TASK
 var load_function = ""
 var params = []
 var param_scene = preload("res://addons/btree/Editor/task/param.tscn")
 
-
 func _ready():
 	connect("close_request", self, "self_close")
-	connect("resize_request", self, "self_resize")
 	$Input/Add.connect("pressed", self, "add_pressed")
 	return
 
@@ -34,10 +31,10 @@ func _enter_tree():
 			opt.selected = 0
 	for i in params:
 		var input = param_scene.instance()
-		input.set_id($Params.get_child_count())
 		input.connect("remove_me", self, "remove_param")
 		input.call_deferred("set_value", i)
 		$Params.add_child(input)
+		input.update_label()
 	return
 
 func as_task():
@@ -57,10 +54,6 @@ func as_while():
 	set_slot(0, true, 0, Color.blue, true, 0, Color.blue)
 	return
 
-func self_resize(new_minsize):
-	rect_size = new_minsize
-	return
-
 func update():
 	if  not get_parent():
 		return
@@ -75,8 +68,18 @@ func update():
 	if  old_sel >= 0:
 		old_tsel = opt.get_item_text(old_sel)
 	
+	var script = get_parent().root_object.get_script()
+	var path = script.resource_path
+	var file = File.new()
+	file.open(path, File.READ)
+	var source = file.get_as_text()
+	file.close()
+	var lscript:GDScript = GDScript.new()
+	lscript.set_source_code(source)
+	lscript.reload()
+	
 	var tm = []
-	var ml = get_parent().root_object.get_method_list()
+	var ml = lscript.get_script_method_list()
 	for m in ml:
 		if  m.name.begins_with("task_") and m.args.size() == 1:
 			tm.append(m.name)
@@ -108,7 +111,9 @@ func set_data(data):
 func get_data():
 	var opt = $Main/Required/opt_function
 	var sel = $Main/Required/opt_function.selected
-	var fname = opt.get_item_text(sel)
+	var fname = null
+	if  sel != -1:
+		fname = opt.get_item_text(sel)
 	var pr = $Params
 	
 	var ret_param = []
@@ -127,14 +132,9 @@ func get_data():
 	return ret_data
 
 func add_pressed():
-	var input = param_scene.instance()
-	input.set_id($Params.get_child_count())
-	input.connect("remove_me", self, "remove_param")
-	$Params.add_child(input)
+	get_parent().add_param(name)
 	return
 
 func remove_param(param):
-	$Params.remove_child(param)
-	for i in range($Params.get_child_count()):
-		$Params.get_child(i).set_id(i)
+	get_parent().del_param(name, param.get_index())
 	return

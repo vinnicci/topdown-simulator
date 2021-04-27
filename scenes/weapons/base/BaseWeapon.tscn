@@ -72,5 +72,6 @@ one_shot = true
 
 [node name="HideStatusTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="ReloadCooldown" to="." method="_on_ReloadCooldown_timeout"]
 [connection signal="timeout" from="HideStatusTimer" to="." method="_on_HideStatusTimer_timeout"]

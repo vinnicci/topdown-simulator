@@ -38,4 +38,5 @@ __meta__ = {
 
 [node name="HideDamageStatusTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="HideDamageStatusTimer" to="." method="_on_HideDamageStatusTimer_timeout"]

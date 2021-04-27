@@ -1,20 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/ais/base/BaseAI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/ais/gunner ai/GunnerAI.gd" type="Script" id=2]
-[ext_resource path="res://scenes/ais/gunner ai/BTREE.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/btree/script/btree.gd" type="Script" id=1]
 
-[sub_resource type="CircleShape2D" id=1]
-resource_local_to_scene = true
-radius = 1000.0
-
-[node name="AI" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" parent="DetectionRange" index="0"]
-shape = SubResource( 1 )
-
-[node name="BTREE" parent="." index="1" instance=ExtResource( 3 )]
+[node name="BTREE" type="Node"]
+script = ExtResource( 1 )
 tree = {
 "connection": [ {
 "from": "inverter",
@@ -1367,3 +1356,4 @@ tree = {
 "type": 0
 }
 }
+_tree_id = "393224259177619"
