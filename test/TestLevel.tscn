@@ -45,4 +45,4 @@ position = Vector2( 47.1622, 227.609 )
 position = Vector2( 147.638, -170.194 )
 
 [node name="Gunner" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 1076.04, 2.1861 )
+position = Vector2( 1057.8, -8.98987 )

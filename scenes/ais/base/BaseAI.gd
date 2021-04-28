@@ -79,21 +79,22 @@ func task_reload_weapon(task):
 
 
 #param 0: backoff or seek
+#param 1: target to track
 func task_get_target_point(task):
 	if task.get_param(0) == "backoff":
-		back_off_target_point()
+		back_off_target_point(blackboard[task.get_param(1)])
 	elif task.get_param(0) == "seek":
-		seek_target_point()
+		seek_target_point(blackboard[task.get_param(1)])
 	task.succeed()
 
 
-func back_off_target_point():
-	blackboard["target"] = -(blackboard["enemy"].global_position -
+func back_off_target_point(target_to_track):
+	blackboard["target"] = -(target_to_track.global_position -
 	global_position).clamped(1) * 1000
 
 
-func seek_target_point():
-	blackboard["target"] = blackboard["enemy"].global_position
+func seek_target_point(target_to_track):
+	blackboard["target"] = target_to_track.global_position
 
 
 const MIN_TARGET_DIST: int = 50
@@ -107,7 +108,7 @@ func task_go_to_target_point(task):
 	if task.get_param(0) == "backoff":
 		if (blackboard[task.get_param(1)].global_position.distance_to(blackboard["target"])
 		> ORIGIN_ENEMY_DIST):
-			back_off_target_point()
+			back_off_target_point(blackboard[task.get_param(1)])
 		if (global_position.distance_to(blackboard[task.get_param(1)].global_position) > 
 		blackboard["weapon_range"] || weapon.current_ammo_count != 0):
 			is_moving = false
@@ -116,7 +117,7 @@ func task_go_to_target_point(task):
 	elif task.get_param(0) == "seek":
 		if (blackboard[task.get_param(1)].global_position.distance_to(blackboard["target"])
 		> ORIGIN_ENEMY_DIST):
-			seek_target_point()
+			seek_target_point(blackboard[task.get_param(1)])
 		if (global_position.distance_to(blackboard[task.get_param(1)].global_position) <=
 		blackboard["weapon_range_on_seek"]):
 			is_moving = false
