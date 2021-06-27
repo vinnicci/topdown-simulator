@@ -1,0 +1,173 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ais/base/BaseAI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ais/spotter ai/SpotterBTREE.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ais/spotter ai/SpotterAI.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 1000.0
+
+[node name="AI" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="DetectionRange" parent="." index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+shape = SubResource( 1 )
+
+[node name="BTREE" parent="." index="1" instance=ExtResource( 2 )]
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "task2",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 1,
+"to": "task",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 65, 60 )
+},
+"name": "root",
+"type": 0
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 65, 60 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "897457590177619"

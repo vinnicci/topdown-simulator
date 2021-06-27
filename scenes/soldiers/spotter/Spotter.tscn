@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/soldiers/base/BaseSoldier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/weapons/spotter vision/SpotterVision.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ais/spotter ai/SpotterAI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/soldiers/spotter/Spotter.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rotate_vision"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+
+[node name="Spotter" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 0, 0, 1 )
+
+[node name="Weapon" parent="." index="5" instance=ExtResource( 2 )]
+rotation = 6.20511
+
+[node name="Anim" type="AnimationPlayer" parent="." index="6"]
+autoplay = "rotate_vision"
+anims/rotate_vision = SubResource( 1 )
+
+[node name="AI" parent="." index="7" instance=ExtResource( 3 )]

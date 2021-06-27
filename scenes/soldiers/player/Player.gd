@@ -2,7 +2,7 @@ extends Soldier
 class_name Player
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$Weapon.look_at(get_global_mouse_position())
 	
 	#movement

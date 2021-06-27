@@ -1,0 +1,158 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/btree/script/btree.gd" type="Script" id=1]
+
+[node name="BTREE" type="Node"]
+script = ExtResource( 1 )
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "task2",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 1,
+"to": "task",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 65, 60 )
+},
+"name": "root",
+"type": 0
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_player_spotted",
+"offset": Vector2( 400, 0 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 264, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_blackboard_player_pos",
+"offset": Vector2( 400, 120 ),
+"params": [ [ "BBShared", 1 ] ],
+"size": Vector2( 327, 87.75 ),
+"values": [ "BBShared" ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 103, 87.75 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 65, 60 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "97467150215533367"

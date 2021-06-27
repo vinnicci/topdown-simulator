@@ -9,7 +9,7 @@ export(float) var reload_cooldown: = 1
 export(String) var action_quote: = ""
 export(String) var damage_quote: = ""
 var current_ammo_count
-var parent_node: Soldier
+var parent_node
 
 
 #initialize weapon
@@ -20,14 +20,14 @@ func _ready() -> void:
 	$RayCast2D.cast_to = Vector2(weap_range, 0)
 
 
-func set_parent(new_parent: Soldier) -> void:
+func set_parent(new_parent):
 	parent_node = new_parent
 	$RayCast2D.add_exception(parent_node)
 
 
-func fire() -> void:
+func fire() -> bool:
 	if $ReloadCooldown.is_stopped() == false || $FireCooldown.is_stopped() == false || current_ammo_count == 0:
-		return
+		return false
 	$MuzzleFlash/Anim.play("flash")
 	var body = $RayCast2D.get_collider()
 	if body is Soldier:
@@ -37,9 +37,10 @@ func fire() -> void:
 	if current_ammo_count == 0:
 		parent_node.set_status("out of ammo!")
 		$HideStatusTimer.stop()
-		return
+		return false
 	parent_node.set_status(action_quote + "\nammo count: " + current_ammo_count as String)
 	$HideStatusTimer.start()
+	return true
 
 
 func reload() -> void:
@@ -53,7 +54,6 @@ func reload() -> void:
 func _on_ReloadCooldown_timeout() -> void:
 	current_ammo_count = max_ammo_count
 	parent_node.set_status("")
-
 
 func _on_HideStatusTimer_timeout() -> void:
 	parent_node.set_status("")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/ais/base/Blackboard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/level/Level.gd" type="Script" id=2]
+[ext_resource path="res://scenes/soldiers/spotter/Spotter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/soldiers/player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/soldiers/sniper/Sniper.tscn" type="PackedScene" id=6]
+
+[node name="BBTest" type="YSort"]
+script = ExtResource( 2 )
+
+[node name="Tree" parent="." instance=ExtResource( 4 )]
+position = Vector2( 780.427, 691.337 )
+
+[node name="Tree2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -367.05, -142.544 )
+
+[node name="Tree3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 185.307, 577.302 )
+
+[node name="Tree4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -274.397, 238.761 )
+
+[node name="Tree5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 473.958, 103.344 )
+
+[node name="Tree6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -213.816, 883.771 )
+
+[node name="Tree7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 780.427, 691.337 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 146.041, 904.819 )
+
+[node name="BBShared" parent="." instance=ExtResource( 1 )]
+agents = [ NodePath("../Spotter"), NodePath("../Sniper"), NodePath("../Sniper2") ]
+
+[node name="Spotter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 277.579, 294.531 )
+
+[node name="Sniper" parent="." instance=ExtResource( 6 )]
+position = Vector2( -221.881, 174.208 )
+
+[node name="Sniper2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1066.68, 170.081 )

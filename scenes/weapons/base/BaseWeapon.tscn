@@ -63,6 +63,7 @@ anims/flash = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
+collision_mask = 3
 
 [node name="FireCooldown" type="Timer" parent="."]
 one_shot = true

@@ -5,9 +5,17 @@ class_name Soldier
 #don't forget to give soldier a weapon
 export(int) var speed: = 1000
 var velocity: Vector2
+var level_node
 
 
 func _ready() -> void:
+	pass
+
+
+func set_level(new_level) -> void:
+	#level
+	level_node = new_level
+
 	#weapon component
 	$Weapon.set_parent(self)
 	
@@ -23,7 +31,7 @@ func set_status(text: String) -> void:
 #movement
 #these function handles rigid body movement
 #might be different if you're using kinematic bodies
-func _integrate_forces(state: Physics2DDirectBodyState) -> void:
+func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	velocity = velocity.normalized()
 	velocity *= speed
 	applied_force = velocity

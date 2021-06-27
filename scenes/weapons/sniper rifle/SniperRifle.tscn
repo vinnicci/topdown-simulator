@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/weapons/base/BaseWeapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/weapons/sniper rifle/SniperRifle.gd" type="Script" id=2]
+[ext_resource path="res://scenes/weapons/sniper rifle/SniperProjectile.tscn" type="PackedScene" id=3]
+
+[node name="Weapon" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+weap_range = 1500
+max_ammo_count = 5
+fire_cooldown = 1.0
+reload_cooldown = 3.5
+action_quote = "shooting sniper rifle"
+damage_quote = "hit by sniper projectile"
+projectile = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.0666667, 0.0705882, 0.0666667, 1 )
+scale = Vector2( 2, 0.3 )
+
+[node name="MuzzleFlash" parent="." index="1"]
+modulate = Color( 0.847059, 0.996078, 0, 0 )
+position = Vector2( 82.4538, 0.151502 )
+scale = Vector2( 1, 1 )
+
+[node name="RayCast2D" parent="." index="2"]
+enabled = false
+collision_mask = 0

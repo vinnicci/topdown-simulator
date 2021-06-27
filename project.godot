@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Blackboard",
+"language": "GDScript",
+"path": "res://scenes/ais/base/Blackboard.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scenes/level/Level.gd"
+}, {
 "base": "Soldier",
 "class": "Player",
 "language": "GDScript",
@@ -25,6 +35,8 @@ _global_script_classes=[ {
 "path": "res://scenes/weapons/base/BaseWeapon.gd"
 } ]
 _global_script_class_icons={
+"Blackboard": "",
+"Level": "",
 "Player": "",
 "Soldier": "",
 "Weapon": ""
@@ -39,6 +51,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+Classes="*res://scenes/classes.gd"
 
 [editor_plugins]
 
@@ -76,6 +89,11 @@ reload={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="npc"
+2d_physics/layer_2="player"
 
 [physics]
 

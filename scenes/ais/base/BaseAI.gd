@@ -3,8 +3,10 @@ extends Node2D
 
 var parent_node: Soldier = null
 var weapon: Weapon = null
-var blackboard: Dictionary
+var blackboard: Dictionary = {}
 var is_moving: bool = false
+
+var blackboards: Dictionary = {}
 
 
 func set_parent(new_parent: Soldier) -> void:
@@ -14,11 +16,37 @@ func set_parent(new_parent: Soldier) -> void:
 	blackboard["weapon_range"] = weapon.weap_range
 
 
+func set_blackboard(var_name: String, value, blackboard_name: String = "local"):
+	if blackboard_name != "local":
+		#shared blackboards
+		var bb_node = blackboards[blackboard_name]
+		bb_node.blackboard[var_name] = value
+	elif blackboard_name == "local":
+		#local blackboard
+		blackboard[var_name] = value
+
+
+func get_blackboard(var_name: String, blackboard_name: String = "local"):
+	if blackboard_name != "local" && blackboards.has(blackboard_name) == true:
+		#shared blackboard
+		var bb_node = blackboards[blackboard_name]
+		if bb_node.blackboard.has(var_name) == true:
+			return bb_node.blackboard[var_name]
+		return null
+	elif blackboard_name == "local":
+		#local blackboard
+		return blackboard[var_name]
+	return null
+	
+
+
 func _ready() -> void:
 	blackboard["enemy"] = null
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if is_instance_valid(parent_node) == false:
+		return
 	if is_moving == true:
 		go_to_target()
 	else:
